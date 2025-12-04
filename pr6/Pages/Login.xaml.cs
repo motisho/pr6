@@ -33,6 +33,9 @@ namespace pr6.Pages
         public Login()
         {
             InitializeComponent();
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
+            Capture.HandlerCorrectCapture += CorrectCapture;
         }
 
         public void CorrectLogin()
