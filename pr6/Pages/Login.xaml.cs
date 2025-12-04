@@ -198,3 +198,4 @@ namespace pr6.Pages
             MainWindow.mainWindow.OpenPage(new Regin());
     }
 }
+ 
