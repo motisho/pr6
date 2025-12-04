@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using pr6.Classes;
-using RegIN_kulikovBorodin.Classes;
+
 
 namespace pr6.Pages
 {
