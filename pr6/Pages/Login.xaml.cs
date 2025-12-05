@@ -30,6 +30,7 @@ namespace pr6.Pages
         string OldLogin;
         int CountSetPassword = 2;
         bool IsCapture = false;
+        
         public Login()
         {
             InitializeComponent();
