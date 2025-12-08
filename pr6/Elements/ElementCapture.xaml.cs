@@ -20,15 +20,27 @@ namespace pr6.Elements
     /// </summary>
     public partial class ElementCapture : UserControl
     {
+        /// <summary>
+        /// Событие которое вызывается при успешном вводе капчи
+        /// </summary>
         public CorrectCapture HandlerCorrectCapture;
-
+        /// <summary>
+        /// Делегат выполнения успешного ввода капчи
+        /// </summary>
         public delegate void CorrectCapture();
-
+        /// <summary>
+        /// Тектовое зачение капчи
+        /// </summary>
         string StrCapture = "";
-
+        /// <summary>
+        /// Ширина капчи
+        /// </summary>
         int ElementWidth = 280;
-
+        /// <summary>
+        /// Высота капчи
+        /// </summary>
         int ElementHieght = 50;
+
         public ElementCapture()
         {
             InitializeComponent();
@@ -106,5 +118,3 @@ namespace pr6.Elements
         }
     }
 }
-    
-

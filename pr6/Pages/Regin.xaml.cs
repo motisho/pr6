@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using pr6.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,8 +18,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Imaging = Aspose.Imaging;
 using static pr6.Classes.User;
+using Imaging = Aspose.Imaging;
 
 namespace pr6.Pages
 {
@@ -104,6 +105,7 @@ namespace pr6.Pages
                 SetNotification("Invalid password", Brushes.Red);
             }
         }
+
         #endregion
         #region SetConfirmPassword
         private void ConfirmPassword(object sender, KeyEventArgs e)

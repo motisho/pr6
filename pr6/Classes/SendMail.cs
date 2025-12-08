@@ -6,15 +6,20 @@ namespace pr6.Classes
 {
     public class SendMail
     {
+        /// <summary>
+        /// Функция отправки сообщения
+        /// </summary>
+        /// <param name="Message">Сообщение которое необходимо отправить</param>
+        /// <param name="To">Почта на которую отправляется сообщение</param>
         public static void SendMessage(string Message, string To)
         {
             var smtpClient = new SmtpClient("smtp.yandex.ru")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("motisho@yandex.ru", "rbfambtlcirwejzo"),
+                Credentials = new NetworkCredential("bapple235@yandex.ru", "pdwogbmuompqzmmd"),
                 EnableSsl = true,
             };
-            smtpClient.Send("landaxer@yandex.ru", To, "Проект RegIn", Message);
+            smtpClient.Send("bapple235@yandex.ru", To, "Проект RegIn", Message);
         }
     }
 }

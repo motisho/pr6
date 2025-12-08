@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pr6.Classes;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -16,7 +17,14 @@ namespace pr6.Pages
     /// </summary>
     public partial class Recovery : Page
     {
+        /// <summary>
+        /// Логин введённый пользователем
+        /// </summary>
         string OldLogin;
+
+        /// <summary>
+        /// Переменная отвечающая за ввод капчи
+        /// </summary>
         bool IsCapture = false;
         public Recovery()
         {
@@ -25,6 +33,9 @@ namespace pr6.Pages
             MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
             Capture.HandlerCorrectCapture += CorrectCapture;
         }
+        /// <summary>
+        /// Метод правильного ввода логина
+        /// </summary>
         private void CorrectLogin()
         {
             if (OldLogin != TbLogin.Text)
@@ -73,7 +84,7 @@ namespace pr6.Pages
                 StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
                 StartAnimation.Completed += delegate
                 {
-                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_user.png"));
+                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic-user.png"));
                     DoubleAnimation EndAnimation = new DoubleAnimation();
                     EndAnimation.From = 0;
                     EndAnimation.To = 1;
@@ -113,7 +124,7 @@ namespace pr6.Pages
                     StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
                     StartAnimation.Completed += delegate
                     {
-                        IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/gamil.png"));
+                        IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_mail.png"));
                         DoubleAnimation EndAnimation = new DoubleAnimation();
                         EndAnimation.From = 0;
                         EndAnimation.To = 1;

@@ -1,0 +1,44 @@
+﻿<Page x:Class="pr6.Pages.PinSetup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:pr6.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PinSetup">
+
+    <Grid Background="{DynamicResource MaterialDesignPaper}">
+        <Grid Height="400" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <Grid>
+                <Image x:Name="IUserControl" HorizontalAlignment="Center" Height="100" Margin="32" VerticalAlignment="Top" Width="100" 
+                       Source="/Images/ic_user.png">
+                    <Image.Clip>
+                        <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
+                    </Image.Clip>
+                </Image>
+
+                <Label x:Name="LStatusLabel" Margin="10,137,10,0" HorizontalContentAlignment="Center" 
+                       Content="Set PIN Code" VerticalAlignment="Top"/>
+
+                <Label Content="Enter 4-digit PIN code" Margin="10,161,10,0" VerticalAlignment="Top"/>
+
+                <PasswordBox x:Name="TbPin1" Height="23" Margin="40,190,200,0" VerticalAlignment="Top" MaxLength="1" 
+                             KeyDown="TbPin1_KeyDown" PasswordChar="*"/>
+                <PasswordBox x:Name="TbPin2" Height="23" Margin="100,190,140,0" VerticalAlignment="Top" MaxLength="1" 
+                             KeyDown="TbPin2_KeyDown" PasswordChar="*"/>
+                <PasswordBox x:Name="TbPin3" Height="23" Margin="160,190,80,0" VerticalAlignment="Top" MaxLength="1" 
+                             KeyDown="TbPin3_KeyDown" PasswordChar="*"/>
+                <PasswordBox x:Name="TbPin4" Height="23" Margin="220,190,20,0" VerticalAlignment="Top" MaxLength="1" 
+                             KeyDown="TbPin4_KeyDown" PasswordChar="*"/>
+
+                <Button x:Name="BtnSetPin" Content="Set PIN" Width="200" Height="35" Margin="50,240,50,0" 
+                        VerticalAlignment="Top" Click="BtnSetPin_Click" 
+                        materialDesign:ButtonAssist.CornerRadius="15"/>
+
+                <Label Content="Back" Margin="10,300,10,0" VerticalAlignment="Top" Foreground="#FF673AB7" 
+                       FontSize="10" MouseDown="OpenLogin"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

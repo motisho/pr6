@@ -19,7 +19,7 @@ namespace pr6.Pages
     /// <summary>
     /// Логика взаимодействия для Confirmation.xaml
     /// </summary>
-    public partial class Confirmation : Page 
+    public partial class Confirmation : Page
     {
         public enum TypeConfirmation
         {
@@ -78,15 +78,26 @@ namespace pr6.Pages
             {
                 TbCode.IsEnabled = false;
                 if (ThisTypeConfirmation == TypeConfirmation.Login)
-                    MessageBox.Show("Авторизация пользователя успешно подтверждена.");
+                {
+                    MessageBox.Show("Авторизация подтверждена!");
+                    if (string.IsNullOrEmpty(MainWindow.mainWindow.UserLogIn.PinCode))
+                    {
+                        MainWindow.mainWindow.OpenPage(new PinSetup());
+                    }
+                    else
+                    {
+                        MainWindow.mainWindow.OpenPage(new PinLogin());
+                    }
+                }
                 else
                 {
                     MainWindow.mainWindow.UserLogIn.SetUser();
-                    MessageBox.Show("Регистрация пользователя успешно подтверждена.");
+                    MessageBox.Show("Регистрация подтверждена! Создайте PIN для быстрого входа.");
+                    MainWindow.mainWindow.OpenPage(new PinSetup());
                 }
             }
         }
         private void OpenLogin(object sender, MouseButtonEventArgs e) =>
-    MainWindow.mainWindow.OpenPage(new Login());
+            MainWindow.mainWindow.OpenPage(new Login());
     }
 }

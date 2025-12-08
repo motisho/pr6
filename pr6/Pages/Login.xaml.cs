@@ -19,9 +19,8 @@ namespace pr6.Pages
     public partial class Login : Page
     {
         string OldLogin;
-        int CountSetPassword = 2;
-        bool IsCapture = false;
-        
+        int CountSetPassword;
+        bool IsCapture;
         public Login()
         {
             InitializeComponent();
@@ -29,13 +28,11 @@ namespace pr6.Pages
             MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
             Capture.HandlerCorrectCapture += CorrectCapture;
         }
-
         public void CorrectLogin()
         {
-            if ( OldLogin != TbLogin.Text)
+            if (OldLogin != TbLogin.Text)
             {
                 SetNotification("Hi, " + MainWindow.mainWindow.UserLogIn.Name, Brushes.Black);
-
                 try
                 {
                     BitmapImage biImg = new BitmapImage();
@@ -53,7 +50,7 @@ namespace pr6.Pages
                         IUser.Source = imgSrc;
                         DoubleAnimation EndAnimation = new DoubleAnimation();
                         EndAnimation.From = 0;
-                        EndAnimation.To = 11;
+                        EndAnimation.To = 1;
                         EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
                         IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
                     };
@@ -61,16 +58,21 @@ namespace pr6.Pages
                 }
                 catch (Exception exp)
                 {
-                Debug.WriteLine(exp.Message);
-                };
+                    Debug.WriteLine(exp.Message);
+                }
+                ;
                 OldLogin = TbLogin.Text;
             }
         }
+        /// <summary>
+        /// Метод не успешной авторизации
+        /// </summary>
         public void InCorrectLogin()
         {
             if (LNameUser.Content != "")
             {
                 LNameUser.Content = "";
+                // Создаём анимацию старта
                 DoubleAnimation StartAnimation = new DoubleAnimation();
                 StartAnimation.From = 1;
                 StartAnimation.To = 0;
@@ -94,14 +96,20 @@ namespace pr6.Pages
             Capture.IsEnabled = false;
             IsCapture = true;
         }
-
+        /// <summary>
+        /// Ввод пароля
+        /// </summary>
         private void SetPassword(object sender, KeyEventArgs e)
         {
+            // Если пользователь нажал клавишу Enter
             if (e.Key == Key.Enter)
-
+                // Вызываем метод ввода пароля
                 SetPassword();
         }
 
+        /// <summary>
+        /// Ввод пароля
+        /// </summary>
         public void SetPassword()
         {
             if (MainWindow.mainWindow.UserLogIn.Password != String.Empty)
@@ -131,6 +139,9 @@ namespace pr6.Pages
                     SetNotification($"Enter capture", Brushes.Red);
             }
         }
+        /// <summary>
+        /// Метод блокировки авторизации
+        /// </summary>
         public void BlockAuthorization()
         {
             DateTime StartBlock = DateTime.Now.AddMinutes(3);
@@ -166,6 +177,9 @@ namespace pr6.Pages
                 CountSetPassword = 2;
             });
         }
+        /// <summary>
+        /// Ввод логина пользователя
+        /// </summary>
         private void SetLogin(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -175,22 +189,41 @@ namespace pr6.Pages
                     SetPassword();
             }
         }
+        /// <summary>
+        /// Ввод логина пользователя
+        /// </summary>
         private void SetLogin(object sender, RoutedEventArgs e)
         {
             MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
             if (TbPassword.Password.Length > 0)
                 SetPassword();
         }
+        /// <summary>
+        /// Метод уведомлений пользователя
+        /// </summary>
+        /// <param name="Message">Сообщение которое необходимо вывести</param>
+        /// <param name="_Color">Цвет сообщения</param>
         public void SetNotification(string Message, SolidColorBrush _Color)
         {
             LNameUser.Content = Message;
             LNameUser.Foreground = _Color;
         }
+        /// <summary>
+        /// Метод открытия страницы восстановления пароля
+        /// </summary>
         private void RecoveryPassword(object sender, MouseButtonEventArgs e) =>
             MainWindow.mainWindow.OpenPage(new Recovery());
 
+        /// <summary>
+        /// Метод открытия страницы регистрации
+        /// </summary>
         private void OpenRegin(object sender, MouseButtonEventArgs e) =>
             MainWindow.mainWindow.OpenPage(new Regin());
+
+        private void BtnPinLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Открываем страницу входа по PIN
+            MainWindow.mainWindow.OpenPage(new PinLogin());
+        }
     }
 }
- 
