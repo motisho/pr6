@@ -7,7 +7,7 @@ namespace pr6.Classes
     public class WorkingDB
     {
    
-    readonly static string connection = "server=localhost;port=3306;database=regin;user=root;pwd=root;";
+    readonly static string connection = "server=127.0.0.1;port=3306;database=regin;user=root;pwd=root;";
 
    
     public static MySqlConnection OpenConnection()

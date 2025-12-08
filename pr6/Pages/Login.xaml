@@ -30,7 +30,7 @@
                     Margin="32"
                     VerticalAlignment="Top"
                     Width="100"
-                    Source="/RegIN;component/Images/ic-user.png">
+                    Source="/pr6;component/Images/ic-user.png">
                     <Image.Clip>
                         <EllipseGeometry
                             RadiusX="50"

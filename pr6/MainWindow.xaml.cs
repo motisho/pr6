@@ -20,10 +20,6 @@ namespace pr6
             InitializeComponent();
             OpenPage(new Pages.Login());
         }
-        /// <summary>
-        /// Функция открытия страницы
-        /// </summary>
-        /// <param name="page">Страница которую необходимо открыть</param>
         public void OpenPage(Page page)
         {
             DoubleAnimation StartAnimation = new DoubleAnimation();

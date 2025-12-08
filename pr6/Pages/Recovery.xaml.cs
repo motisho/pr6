@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static pr6.Classes.User;
-using static pr6.Elements.ElementCapture;
 
 namespace pr6.Pages
 {
@@ -83,7 +73,7 @@ namespace pr6.Pages
                 StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
                 StartAnimation.Completed += delegate
                 {
-                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic-user.png"));
+                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_user.png"));
                     DoubleAnimation EndAnimation = new DoubleAnimation();
                     EndAnimation.From = 0;
                     EndAnimation.To = 1;
