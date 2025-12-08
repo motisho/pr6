@@ -19,7 +19,7 @@ namespace pr6.Pages
     /// <summary>
     /// Логика взаимодействия для Confirmation.xaml
     /// </summary>
-    public partial class Confirmation : Page
+    public partial class Confirmation : Page 
     {
         public enum TypeConfirmation
         {
