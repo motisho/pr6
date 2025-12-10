@@ -17,7 +17,8 @@
                    Height="100"
                    Width="100"
                    Margin="32"
-                   VerticalAlignment="Top">
+                   VerticalAlignment="Top"
+                   Source="/pr6;component/Images/ic_user.png">
                 <Image.Clip>
                     <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
                 </Image.Clip>

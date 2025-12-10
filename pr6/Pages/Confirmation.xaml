@@ -29,7 +29,7 @@
                 Margin="100,34,0,0"
                 VerticalAlignment="Top"
                 Width="100"
-                Source="/RegIN;component/Images/ic_mail.png"
+                Source="/pr6;component/Images/gmail.png"
                 >
                     <Image.Clip>
                         <EllipseGeometry

@@ -58,6 +58,10 @@ namespace pr6
         /// </summary> 
         public void ShowMainApp()
         {
+            // СБРОС: Полностью очищаем данные предыдущего пользователя перед новой авторизацией
+            UserLogIn = new Classes.User();
+
+            // Открываем страницу входа заново
             OpenPage(new Pages.Login());
         }
     }
