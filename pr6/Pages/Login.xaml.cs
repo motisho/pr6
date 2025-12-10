@@ -16,18 +16,26 @@ namespace pr6.Pages
     /// <summary>
     /// Логика взаимодействия для Login.xaml
     /// </summary>
+    /// <summary>
+    /// Логика взаимодействия для Login.xaml
+    /// </summary>
     public partial class Login : Page
     {
         string OldLogin;
         int CountSetPassword;
         bool IsCapture;
+
         public Login()
         {
             InitializeComponent();
             MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += CorrectLogin;
             MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
             Capture.HandlerCorrectCapture += CorrectCapture;
+
+            // Инициализация счетчика попыток, если он нужен для капчи/блокировки
+            CountSetPassword = 3; // Предположим, 3 попытки
         }
+
         public void CorrectLogin()
         {
             if (OldLogin != TbLogin.Text)
@@ -64,6 +72,7 @@ namespace pr6.Pages
                 OldLogin = TbLogin.Text;
             }
         }
+
         /// <summary>
         /// Метод не успешной авторизации
         /// </summary>
@@ -90,14 +99,20 @@ namespace pr6.Pages
             }
             if (TbLogin.Text.Length > 0)
                 SetNotification("Login is incorrect", Brushes.Red);
+
+            // Сброс счетчика, чтобы предотвратить дальнейший ввод
+            CountSetPassword = 3;
+            IsCapture = false; // Сброс флага капчи
         }
+
         public void CorrectCapture()
         {
             Capture.IsEnabled = false;
             IsCapture = true;
         }
+
         /// <summary>
-        /// Ввод пароля
+        /// Ввод пароля по нажатию Enter
         /// </summary>
         private void SetPassword(object sender, KeyEventArgs e)
         {
@@ -105,6 +120,22 @@ namespace pr6.Pages
             if (e.Key == Key.Enter)
                 // Вызываем метод ввода пароля
                 SetPassword();
+        }
+
+        public void NavigateAfterSuccessfulLogin()
+        {
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin -= CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin -= InCorrectLogin;
+            Capture.HandlerCorrectCapture -= CorrectCapture;
+
+            if (!string.IsNullOrEmpty(MainWindow.mainWindow.UserLogIn.PinCode)) 
+            {
+                MainWindow.mainWindow.OpenPage(new PinLogin());
+            }
+            else
+            {
+                MainWindow.mainWindow.ShowMainApp();
+            }
         }
 
         /// <summary>
@@ -118,7 +149,9 @@ namespace pr6.Pages
                 {
                     if (MainWindow.mainWindow.UserLogIn.Password == TbPassword.Password)
                     {
-                        MainWindow.mainWindow.OpenPage(new Confirmation(Confirmation.TypeConfirmation.Login));
+                        // ИСПРАВЛЕНИЕ: Вместо открытия Confirmation, 
+                        // вызываем новую логику навигации
+                        NavigateAfterSuccessfulLogin();
                     }
                     else
                     {
@@ -139,6 +172,9 @@ namespace pr6.Pages
                     SetNotification($"Enter capture", Brushes.Red);
             }
         }
+
+        // ... (Остальной код BlockAuthorization, SetLogin и т.д. без изменений)
+
         /// <summary>
         /// Метод блокировки авторизации
         /// </summary>
@@ -174,9 +210,10 @@ namespace pr6.Pages
                 Capture.IsEnabled = true;
                 Capture.CreateCapture();
                 IsCapture = false;
-                CountSetPassword = 2;
+                CountSetPassword = 3; // Изменено на 3 для согласованности
             });
         }
+
         /// <summary>
         /// Ввод логина пользователя
         /// </summary>
@@ -189,6 +226,7 @@ namespace pr6.Pages
                     SetPassword();
             }
         }
+
         /// <summary>
         /// Ввод логина пользователя
         /// </summary>
@@ -198,6 +236,7 @@ namespace pr6.Pages
             if (TbPassword.Password.Length > 0)
                 SetPassword();
         }
+
         /// <summary>
         /// Метод уведомлений пользователя
         /// </summary>
@@ -208,6 +247,7 @@ namespace pr6.Pages
             LNameUser.Content = Message;
             LNameUser.Foreground = _Color;
         }
+
         /// <summary>
         /// Метод открытия страницы восстановления пароля
         /// </summary>

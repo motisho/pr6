@@ -4,55 +4,61 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:pr6.Pages"
-     mc:Ignorable="d" 
+      xmlns:elements="clr-namespace:pr6.Elements"
+      mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PinLogin">
 
     <Grid Background="{DynamicResource MaterialDesignPaper}">
         <Grid Height="400" Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid>
 
-                <!-- Иконка пользователя (такая же как в PinSetup) -->
-                <Image x:Name="IUserControl"
-       HorizontalAlignment="Center"
-       Height="100"
-       Width="100"
-       Margin="32"
-       VerticalAlignment="Top">
-                    <Image.Clip>
-                        <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
-                    </Image.Clip>
-                </Image>
+            <Image x:Name="IUserControl"
+                   HorizontalAlignment="Center"
+                   Height="100"
+                   Width="100"
+                   Margin="32"
+                   VerticalAlignment="Top">
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
+                </Image.Clip>
+            </Image>
 
-                <Label x:Name="LUserName"
-       Margin="10,137,10,0"
-       VerticalAlignment="Top"
-       HorizontalContentAlignment="Center"
-       FontSize="16"
-       Foreground="Black"/>
-                <Label Content="Enter your 4-digit PIN" Margin="10,161,10,0" VerticalAlignment="Top"/>
+            <Label x:Name="LUserName"
+                   Margin="10,137,10,0"
+                   VerticalAlignment="Top"
+                   HorizontalContentAlignment="Center"
+                   FontSize="16"
+                   Foreground="Black"/>
 
-                <!-- PIN поля -->
-                <PasswordBox x:Name="TbPin1" Height="23" Margin="40,190,200,0" VerticalAlignment="Top"
-                             MaxLength="1" PasswordChar="*" KeyDown="TbPin1_KeyDown"/>
-                <PasswordBox x:Name="TbPin2" Height="23" Margin="100,190,140,0" VerticalAlignment="Top"
-                             MaxLength="1" PasswordChar="*" KeyDown="TbPin2_KeyDown"/>
-                <PasswordBox x:Name="TbPin3" Height="23" Margin="160,190,80,0" VerticalAlignment="Top"
-                             MaxLength="1" PasswordChar="*" KeyDown="TbPin3_KeyDown"/>
-                <PasswordBox x:Name="TbPin4" Height="23" Margin="220,190,20,0" VerticalAlignment="Top"
-                             MaxLength="1" PasswordChar="*" KeyDown="TbPin4_KeyDown"/>
+            <Label Content="Enter your 4-digit PIN" 
+                   Margin="10,161,10,0" 
+                   VerticalAlignment="Top"
+                   HorizontalContentAlignment="Center"/>
 
-                <!-- Кнопка входа -->
-                <Button x:Name="BtnLogin" Content="Login" Width="200" Height="35" Margin="50,240,50,0"
-                        VerticalAlignment="Top" Click="BtnLogin_Click"
-                        materialDesign:ButtonAssist.CornerRadius="15"/>
+            <StackPanel VerticalAlignment="Center" Margin="0,180,0,0">
 
-                <!-- Назад -->
-                <Label Content="Back" Margin="10,300,10,0" VerticalAlignment="Top"
-                       Foreground="#FF673AB7" FontSize="10"
+                <elements:PinInputControl x:Name="PinControl" 
+                                          PinCompleted="PinControl_PinCompleted"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,0,0,20"/>
+
+                <Button x:Name="BtnLogin" 
+                        Content="LOGIN" 
+                        Click="BtnLogin_Click" 
+                        IsEnabled="False" 
+                        Width="200"
+                        Height="35"
+                        HorizontalAlignment="Center"/>
+
+                <Label Content="Back" 
+                       Margin="0,20,0,0" 
+                       HorizontalAlignment="Center"
+                       Foreground="#FF673AB7" 
+                       FontSize="12"
+                       Cursor="Hand"
                        MouseDown="OpenLogin"/>
+            </StackPanel>
 
-            </Grid>
         </Grid>
     </Grid>
 </Page>

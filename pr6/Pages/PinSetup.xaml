@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+xmlns:elements="clr-namespace:pr6.Elements"
       xmlns:local="clr-namespace:pr6.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -23,18 +24,21 @@
 
                 <Label Content="Enter 4-digit PIN code" Margin="10,161,10,0" VerticalAlignment="Top"/>
 
-                <PasswordBox x:Name="TbPin1" Height="23" Margin="40,190,200,0" VerticalAlignment="Top" MaxLength="1" 
-                             KeyDown="TbPin1_KeyDown" PasswordChar="*"/>
-                <PasswordBox x:Name="TbPin2" Height="23" Margin="100,190,140,0" VerticalAlignment="Top" MaxLength="1" 
-                             KeyDown="TbPin2_KeyDown" PasswordChar="*"/>
-                <PasswordBox x:Name="TbPin3" Height="23" Margin="160,190,80,0" VerticalAlignment="Top" MaxLength="1" 
-                             KeyDown="TbPin3_KeyDown" PasswordChar="*"/>
-                <PasswordBox x:Name="TbPin4" Height="23" Margin="220,190,20,0" VerticalAlignment="Top" MaxLength="1" 
-                             KeyDown="TbPin4_KeyDown" PasswordChar="*"/>
+                <Grid>
+                    <elements:PinInputControl x:Name="PinControl" 
+                                  PinCompleted="PinControl_PinCompleted"
+                                  Margin="0,10,0,10"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
 
-                <Button x:Name="BtnSetPin" Content="Set PIN" Width="200" Height="35" Margin="50,240,50,0" 
-                        VerticalAlignment="Top" Click="BtnSetPin_Click" 
-                        materialDesign:ButtonAssist.CornerRadius="15"/>
+                    <Button x:Name="BtnSetPin" 
+                Content="УСТАНОВИТЬ PIN" 
+                Click="BtnSetPin_Click" 
+                IsEnabled="False" 
+                Margin="0, 100, 0, 0"/>
+                </Grid>
+
+                
 
                 <Label Content="Back" Margin="10,300,10,0" VerticalAlignment="Top" Foreground="#FF673AB7" 
                        FontSize="10" MouseDown="OpenLogin"/>

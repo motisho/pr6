@@ -84,7 +84,7 @@ namespace pr6.Pages
                 StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
                 StartAnimation.Completed += delegate
                 {
-                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic-user.png"));
+                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_user.png"));
                     DoubleAnimation EndAnimation = new DoubleAnimation();
                     EndAnimation.From = 0;
                     EndAnimation.To = 1;
@@ -124,7 +124,7 @@ namespace pr6.Pages
                     StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
                     StartAnimation.Completed += delegate
                     {
-                        IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_mail.png"));
+                        IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/gmail.png"));
                         DoubleAnimation EndAnimation = new DoubleAnimation();
                         EndAnimation.From = 0;
                         EndAnimation.To = 1;

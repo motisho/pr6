@@ -16,10 +16,10 @@ namespace pr6.Classes
             var smtpClient = new SmtpClient("smtp.yandex.ru")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("bapple235@yandex.ru", "pdwogbmuompqzmmd"),
+                Credentials = new NetworkCredential("motisho@yandex.ru", "pgzusfqoyjntibvk"),
                 EnableSsl = true,
             };
-            smtpClient.Send("bapple235@yandex.ru", To, "Проект RegIn", Message);
+            smtpClient.Send("motisho@yandex.ru", To, "Проект RegIn", Message);
         }
     }
 }

@@ -1,0 +1,2202 @@
+﻿PROJECT EXPORT - 12/10/2025 15:22:29
+Project Path: C:\Users\student-a502.PERMAVIAT\Desktop\asdasd\pr6
+Total Files: 21
+
+================================================================================
+FILE: pr6.sln
+================================================================================
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pr6", "pr6\pr6.csproj", "{49022C6A-A547-4950-9F40-3C45A954426D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49022C6A-A547-4950-9F40-3C45A954426D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49022C6A-A547-4950-9F40-3C45A954426D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49022C6A-A547-4950-9F40-3C45A954426D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49022C6A-A547-4950-9F40-3C45A954426D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+
+
+
+================================================================================
+FILE: pr6\App.config
+================================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.2" newVersion="4.0.1.2" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
+
+
+================================================================================
+FILE: pr6\App.xaml.cs
+================================================================================
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace pr6
+{
+    /// <summary>
+    /// Логика взаимодействия для App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+    }
+}
+
+
+
+================================================================================
+FILE: pr6\MainWindow.xaml.cs
+================================================================================
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using pr6.Classes;
+
+namespace pr6
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+
+        /// <summary>
+        /// Логика взаимодействия для MainWindow.xaml
+        /// </summary>
+
+        /// <summary>
+        /// Переменная которая ссылается на окно MainWindow
+        /// </summary>
+        public static MainWindow mainWindow;
+        /// <summary>
+        /// Авторизированный пользователь
+        /// </summary>
+        public User UserLogIn = new User();
+        public MainWindow()
+        {
+            InitializeComponent();
+            mainWindow = this;
+            OpenPage(new Pages.Login());
+        }
+        /// <summary>
+        /// Функция открытия страницы
+        /// </summary>
+        /// <param name="page">Страница которую необходимо открыть</param>
+        public void OpenPage(Page page)
+        {
+            DoubleAnimation StartAnimation = new DoubleAnimation();
+            StartAnimation.From = 1;
+            StartAnimation.To = 0;
+            StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+            StartAnimation.Completed += delegate
+            {
+                frame.Navigate(page);
+                DoubleAnimation EndAnimation = new DoubleAnimation();
+                EndAnimation.From = 0;
+                EndAnimation.To = 1;
+                EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                frame.BeginAnimation(Frame.OpacityProperty, EndAnimation);
+            };
+            frame.BeginAnimation(Frame.OpacityProperty, StartAnimation);
+        }
+
+        /// <summary>
+        /// Точка входа в основное приложение после авторизации/установки PIN.
+        /// Здесь можно заменить на реальную загрузку главной страницы приложения.
+        /// </summary>
+        public void ShowMainApp()
+        {
+            OpenPage(new Pages.Login());
+        }
+    }
+}
+
+
+
+================================================================================
+FILE: pr6\packages.config
+================================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Aspose.Imaging" version="25.12.0" targetFramework="net472" />
+  <package id="BouncyCastle.Cryptography" version="2.6.2" targetFramework="net472" />
+  <package id="Google.Protobuf" version="3.32.0" targetFramework="net472" />
+  <package id="K4os.Compression.LZ4" version="1.3.8" targetFramework="net472" />
+  <package id="K4os.Compression.LZ4.Streams" version="1.3.8" targetFramework="net472" />
+  <package id="K4os.Hash.xxHash" version="1.0.8" targetFramework="net472" />
+  <package id="MaterialDesignColors" version="5.3.0" targetFramework="net472" />
+  <package id="MaterialDesignThemes" version="5.3.0" targetFramework="net472" />
+  <package id="Microsoft.Bcl.AsyncInterfaces" version="5.0.0" targetFramework="net472" />
+  <package id="Microsoft.Xaml.Behaviors.Wpf" version="1.1.77" targetFramework="net472" />
+  <package id="MySql.Data" version="9.5.0" targetFramework="net472" />
+  <package id="System.Buffers" version="4.5.1" targetFramework="net472" />
+  <package id="System.Configuration.ConfigurationManager" version="8.0.0" targetFramework="net472" />
+  <package id="System.IO.Pipelines" version="5.0.2" targetFramework="net472" />
+  <package id="System.Memory" version="4.5.5" targetFramework="net472" />
+  <package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net472" />
+  <package id="System.Runtime.CompilerServices.Unsafe" version="6.0.0" targetFramework="net472" />
+  <package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net472" />
+  <package id="ZstdSharp.Port" version="0.8.6" targetFramework="net472" />
+</packages>
+
+
+================================================================================
+FILE: pr6\pr6.csproj
+================================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49022C6A-A547-4950-9F40-3C45A954426D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>pr6</RootNamespace>
+    <AssemblyName>pr6</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Imaging, Version=25.12.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Imaging.25.12.0\lib\net40\Aspose.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.32.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.32.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=5.3.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.5.3.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.3.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.5.3.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.5.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.5.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ZstdSharp, Version=0.8.6.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.6\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Elements\ElementCapture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Elements\PinInputControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\SendMail.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\WorkingDB.cs" />
+    <Compile Include="Elements\ElementCapture.xaml.cs">
+      <DependentUpon>ElementCapture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\PinInputControl.xaml.cs">
+      <DependentUpon>PinInputControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Confirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PinLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PinSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Recovery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Regin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PinLogin.xaml.cs">
+      <DependentUpon>PinLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PinSetup.xaml.cs">
+      <DependentUpon>PinSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Recovery.xaml.cs">
+      <DependentUpon>Recovery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Regin.xaml.cs">
+      <DependentUpon>Regin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Noto\NotoSans-Bold.ttf" />
+    <Resource Include="Resources\Noto\NotoSans-BoldItalic.ttf" />
+    <Resource Include="Resources\Noto\NotoSans-Italic.ttf" />
+    <Resource Include="Resources\Noto\NotoSans-Regular.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Black.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Light.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-ThinItalic.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-Light.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Resources\Roboto\RobotoCondensed-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_user.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>
+
+
+================================================================================
+FILE: pr6\Classes\SendMail.cs
+================================================================================
+
+using System.Net;
+using System.Net.Mail;
+
+namespace pr6.Classes
+{
+    public class SendMail
+    {
+        /// <summary>
+        /// Функция отправки сообщения
+        /// </summary>
+        /// <param name="Message">Сообщение которое необходимо отправить</param>
+        /// <param name="To">Почта на которую отправляется сообщение</param>
+        public static void SendMessage(string Message, string To)
+        {
+            var smtpClient = new SmtpClient("smtp.yandex.ru")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("motisho@yandex.ru", "pgzusfqoyjntibvk"),
+                EnableSsl = true,
+            };
+            smtpClient.Send("motisho@yandex.ru", To, "Проект RegIn", Message);
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Classes\User.cs
+================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+
+namespace pr6.Classes
+{
+    public class User
+    {
+        public int Id { get; set; } = -1;
+        public string Login { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public byte[] Image = new byte[0];
+        public DateTime DateUpdate { get; set; }
+        public DateTime DateCreate { get; set; }
+        public string PinCode { get; set; } = string.Empty;
+
+        public CorrectLogin HandlerCorrectLogin;
+        public InCorrectLogin HandlerInCorrectLogin;
+
+        public delegate void CorrectLogin();
+        public delegate void InCorrectLogin();
+
+        void ReadUserFromReader(MySqlDataReader reader)
+        {
+            Id = reader.GetInt32("Id");
+            Login = reader.GetString("Login");
+            Password = reader.GetString("Password");
+            Name = reader.GetString("Name");
+
+            int imageOrdinal = reader.GetOrdinal("Image");
+            if (!reader.IsDBNull(imageOrdinal))
+            {
+                long length = reader.GetBytes(imageOrdinal, 0, null, 0, 0);
+                if (length > 0)
+                {
+                    Image = new byte[length];
+                    reader.GetBytes(imageOrdinal, 0, Image, 0, (int)length);
+                }
+                else
+                {
+                    Image = new byte[0];
+                }
+            }
+            else
+            {
+                Image = new byte[0];
+            }
+
+            DateUpdate = reader.GetDateTime("DateUpdate");
+            DateCreate = reader.GetDateTime("DateCreate");
+
+            int pinOrdinal = reader.GetOrdinal("PinCode");
+            if (!reader.IsDBNull(pinOrdinal))
+                PinCode = reader.GetString(pinOrdinal);
+            else
+                PinCode = string.Empty;
+        }
+
+        /// <summary>
+        /// Получение данных пользователя по логину (защищённый запрос)
+        /// </summary>
+        public void GetUserLogin(string login)
+        {
+            Id = -1;
+            Login = Password = Name = string.Empty;
+            Image = new byte[0];
+            PinCode = string.Empty;
+
+            using (var conn = WorkingDB.OpenConnection())
+            {
+                if (!WorkingDB.OpenConnection(conn))
+                {
+                    HandlerInCorrectLogin?.Invoke();
+                    return;
+                }
+
+                using (var cmd = new MySqlCommand("SELECT * FROM users WHERE Login = @login LIMIT 1", conn))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            ReadUserFromReader(reader);
+                            HandlerCorrectLogin?.Invoke();
+                            return;
+                        }
+                    }
+                }
+            }
+            HandlerInCorrectLogin?.Invoke();
+        }
+
+        /// <summary>
+        /// Сохранение нового пользователя (параметризованный INSERT)
+        /// </summary>
+        public void SetUser()
+        {
+            using (var conn = WorkingDB.OpenConnection())
+            {
+                if (!WorkingDB.OpenConnection(conn)) return;
+
+                using (var cmd = new MySqlCommand(
+                    "INSERT INTO users (Login, Password, Name, Image, DateUpdate, DateCreate, PinCode) " +
+                    "VALUES (@Login, @Password, @Name, @Image, @DateUpdate, @DateCreate, @PinCode); SELECT LAST_INSERT_ID();", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Login", Login);
+                    cmd.Parameters.AddWithValue("@Password", Password);
+                    cmd.Parameters.AddWithValue("@Name", Name);
+                    cmd.Parameters.AddWithValue("@Image", Image);
+                    cmd.Parameters.AddWithValue("@DateUpdate", DateUpdate);
+                    cmd.Parameters.AddWithValue("@DateCreate", DateCreate);
+                    cmd.Parameters.AddWithValue("@PinCode", PinCode);
+
+                    Id = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Сгенерировать и отправить новый пароль
+        /// </summary>
+        public void CrateNewPassword()
+        {
+            if (string.IsNullOrEmpty(Login))
+                return;
+
+            Password = GeneratePass();
+            using (var conn = WorkingDB.OpenConnection())
+            {
+                if (!WorkingDB.OpenConnection(conn)) return;
+
+                using (var cmd = new MySqlCommand("UPDATE users SET Password = @pwd WHERE Login = @login", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pwd", Password);
+                    cmd.Parameters.AddWithValue("@login", Login);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            SendMail.SendMessage($"Your account password has been changed. Password: {Password}", Login);
+        }
+
+        /// <summary>
+        /// Вход по PIN (безопасный параметризованный запрос)
+        /// </summary>
+        public void LoginByPin(string pin)
+        {
+            Id = -1;
+            Login = Password = Name = string.Empty;
+            Image = new byte[0];
+            PinCode = string.Empty;
+
+            using (var conn = WorkingDB.OpenConnection())
+            {
+                if (!WorkingDB.OpenConnection(conn))
+                {
+                    HandlerInCorrectLogin?.Invoke();
+                    return;
+                }
+
+                using (var cmd = new MySqlCommand("SELECT * FROM users WHERE PinCode = @pin LIMIT 1", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pin", pin);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            ReadUserFromReader(reader);
+                            HandlerCorrectLogin?.Invoke();
+                            return;
+                        }
+                    }
+                }
+            }
+            HandlerInCorrectLogin?.Invoke();
+        }
+
+        /// <summary>
+        /// Сохранение PIN пользователя в БД
+        /// </summary>
+        public void SavePin(string pin)
+        {
+            if (Id <= 0) return;
+
+            using (var conn = WorkingDB.OpenConnection())
+            {
+                if (!WorkingDB.OpenConnection(conn)) return;
+
+                using (var cmd = new MySqlCommand("UPDATE users SET PinCode = @pin WHERE Id = @id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pin", pin);
+                    cmd.Parameters.AddWithValue("@id", Id);
+                    cmd.ExecuteNonQuery();
+                    PinCode = pin;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Генерация случайного пароля (упрощённо и безопасно)
+        /// </summary>
+        public string GeneratePass()
+        {
+            var rnd = new Random();
+            var chars = "0123456789-.,!?*()_+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            var sb = new StringBuilder(10);
+            for (int i = 0; i < 10; i++)
+                sb.Append(chars[rnd.Next(chars.Length)]);
+            return sb.ToString();
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Classes\WorkingDB.cs
+================================================================================
+using System;
+using System.Diagnostics;
+using MySql.Data.MySqlClient;
+
+namespace pr6.Classes
+{
+    public class WorkingDB
+    {
+        /// <summary>
+        /// Строка подключения к базе данных, указывается сервер, порт подключения, база данных, имя пользователя, пароль пользователя
+        /// </summary>
+        readonly static string connection = "server=localhost;port=3306;database=regin;user=root;pwd=;";
+
+        /// <summary>
+        /// Создание и открытие подключения
+        /// </summary>
+        /// <returns>Открытое подключение или null</returns>
+        public static MySqlConnection OpenConnection()
+        {
+            try
+            {
+                MySqlConnection mySqlConnection = new MySqlConnection(connection);
+                mySqlConnection.Open();
+                return mySqlConnection;
+            }
+            catch (Exception exp)
+            {
+                Debug.WriteLine(exp.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Функция выполнения SQL-запросов
+        /// </summary>
+        /// <param name="Sql">SQL-запрос</param>
+        /// <param name="mySqlConnection">Открытое подключение</param>
+        /// <returns></returns>
+        public static MySqlDataReader Query(string Sql, MySqlConnection mySqlConnection)
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand(Sql, mySqlConnection);
+            return mySqlCommand.ExecuteReader();
+        }
+
+        /// <summary>
+        /// Функция закрытия соединения с базой данных
+        /// </summary>
+        /// <param name="mySqlConnection">Открытое MySQL соединение</param>
+        public static void CloseConnection(MySqlConnection mySqlConnection)
+        {
+            mySqlConnection.Close();
+            MySqlConnection.ClearPool(mySqlConnection);
+        }
+
+        /// <summary>
+        /// Функция проверки соединение на работоспособность
+        /// </summary>
+        /// <param name="mySqlConnection">MySQL соединение</param>
+        /// <returns>Статус работоспособности соединения</returns>
+        public static bool OpenConnection(MySqlConnection mySqlConnection)
+        {
+            return mySqlConnection != null && mySqlConnection.State == System.Data.ConnectionState.Open;
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Elements\ElementCapture.xaml.cs
+================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace pr6.Elements
+{
+    /// <summary>
+    /// Логика взаимодействия для ElementCapture.xaml
+    /// </summary>
+    public partial class ElementCapture : UserControl
+    {
+        /// <summary>
+        /// Событие которое вызывается при успешном вводе капчи
+        /// </summary>
+        public CorrectCapture HandlerCorrectCapture;
+        /// <summary>
+        /// Делегат выполнения успешного ввода капчи
+        /// </summary>
+        public delegate void CorrectCapture();
+        /// <summary>
+        /// Тектовое зачение капчи
+        /// </summary>
+        string StrCapture = "";
+        /// <summary>
+        /// Ширина капчи
+        /// </summary>
+        int ElementWidth = 280;
+        /// <summary>
+        /// Высота капчи
+        /// </summary>
+        int ElementHieght = 50;
+
+        public ElementCapture()
+        {
+            InitializeComponent();
+            CreateCapture();
+        }
+        public void CreateCapture()
+        {
+            InputCapture.Text = "";
+            Capture.Children.Clear();
+            StrCapture = "";
+            CreateBackground();
+            Background();
+        }
+        #region CreateCapture
+        /// <summary>
+        /// Функция создания заднего фона капчи
+        /// </summary>
+        void CreateBackground()
+        {
+            Random ThisRandom = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                int back = ThisRandom.Next(0, 10);
+                Label LBackground = new Label()
+                {
+                    Content = back,
+                    FontSize = ThisRandom.Next(10, 16),
+                    FontWeight = FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Color.FromArgb(100, (byte)ThisRandom.Next(0, 255), (byte)ThisRandom.Next(0, 255), (byte)ThisRandom.Next(0, 255))),
+                    Margin = new Thickness(ThisRandom.Next(0, ElementWidth - 20), ThisRandom.Next(0, ElementHieght - 20), 0, 0)
+                };
+                Capture.Children.Add(LBackground);
+            }
+        }
+        /// <summary>
+        /// Функция создания переднего плана капчи
+        /// </summary>
+        void Background()
+        {
+            Random ThisRandom = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                int back = ThisRandom.Next(0, 10);
+                Label LCode = new Label()
+                {
+                    Content = back,
+                    FontSize = 30,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)ThisRandom.Next(0, 255), (byte)ThisRandom.Next(0, 255), (byte)ThisRandom.Next(0, 255))),
+                    Margin = new Thickness(ElementWidth / 2 - 60 + i * 30, ThisRandom.Next(-10, 10), 0, 0)
+                };
+                StrCapture += back.ToString();
+                Capture.Children.Add(LCode);
+            }
+        }
+        #endregion
+        /// <summary>
+        /// Функция проверки капчи
+        /// </summary>
+        /// <returns>Правильно ли введена капча</returns>
+        public bool OnCapture()
+        {
+            return StrCapture == InputCapture.Text;
+        }
+        /// <summary>
+        /// Автоматический ввод капчи
+        /// </summary>
+        private void EnterCapture(object sender, KeyEventArgs e)
+        {
+            if (InputCapture.Text.Length == 4)
+                if (!OnCapture())
+                    CreateCapture();
+                else if (HandlerCorrectCapture != null)
+                    HandlerCorrectCapture.Invoke();
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Elements\PinInputControl.xaml.cs
+================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace pr6.Elements
+{
+    /// <summary>
+    /// Логика взаимодействия для PinInputControl.xaml
+    /// </summary>
+    public partial class PinInputControl : UserControl
+    {
+        /// <summary>
+        /// Логика взаимодействия для PinInputControl.xaml
+        /// </summary>
+
+        // Событие, которое срабатывает, когда PIN полностью введен
+        public event PinCompletedEventHandler PinCompleted;
+        public delegate void PinCompletedEventHandler(string pin);
+
+        private readonly PasswordBox[] pinBoxes;
+
+        public PinInputControl()
+        {
+            InitializeComponent();
+            // Сбор всех PasswordBox в массив для удобной работы
+            pinBoxes = new PasswordBox[] { TbPin1, TbPin2, TbPin3, TbPin4 };
+            TbPin1.Focus(); // Устанавливаем начальный фокус
+        }
+
+        /// <summary>
+        /// Свойство для получения введенного PIN-кода
+        /// </summary>
+        public string PinCode
+        {
+            get => string.Join("", pinBoxes.Select(box => box.Password));
+        }
+
+        /// <summary>
+        /// Очищает все поля ввода и устанавливает фокус на первое поле
+        /// </summary>
+        public void Clear()
+        {
+            foreach (var box in pinBoxes)
+            {
+                box.Password = string.Empty;
+            }
+            TbPin1.Focus();
+        }
+
+        private void Pin_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var currentBox = sender as PasswordBox;
+            int currentIndex = pinBoxes.ToList().IndexOf(currentBox);
+
+            // Автоматический переход к следующему полю при вводе 1 символа
+            if (currentBox.Password.Length == 1)
+            {
+                if (currentIndex < pinBoxes.Length - 1)
+                {
+                    pinBoxes[currentIndex + 1].Focus();
+                }
+                else if (currentIndex == pinBoxes.Length - 1)
+                {
+                    // Если введен последний символ, вызываем событие завершения
+                    PinCompleted?.Invoke(PinCode);
+                }
+            }
+        }
+
+        private void Pin_KeyDown(object sender, KeyEventArgs e)
+        {
+            var currentBox = sender as PasswordBox;
+            int currentIndex = pinBoxes.ToList().IndexOf(currentBox);
+
+            // 1. Обработка Backspace для перемещения фокуса назад
+            if (e.Key == Key.Back && currentBox.Password.Length == 0 && currentIndex > 0)
+            {
+                // Перемещаем фокус на предыдущий блок и удаляем из него символ
+                pinBoxes[currentIndex - 1].Focus();
+                pinBoxes[currentIndex - 1].Password = string.Empty;
+                e.Handled = true; // Предотвращаем дальнейшую обработку
+            }
+            // 2. Обработка ввода только цифр
+            // Разрешаем: цифры (D0-D9, NumPad0-NumPad9), Backspace, Delete, стрелки, Tab
+            else if (!((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+                     && e.Key != Key.Back && e.Key != Key.Delete && e.Key != Key.Left && e.Key != Key.Right && e.Key != Key.Tab)
+            {
+                e.Handled = true; // Блокируем ввод не-цифр
+            }
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\Confirmation.xaml.cs
+================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для Confirmation.xaml
+    /// </summary>
+    public partial class Confirmation : Page
+    {
+        public enum TypeConfirmation
+        {
+            Login,
+            Regin
+        }
+
+        TypeConfirmation ThisTypeConfirmation;
+
+        public int Code = 0;
+        public Confirmation(TypeConfirmation TypeConfirmation)
+        {
+            InitializeComponent();
+            ThisTypeConfirmation = TypeConfirmation;
+            SendMailCode();
+        }
+        public void SendMailCode()
+        {
+            Code = new Random().Next(100000, 999999);
+            Classes.SendMail.SendMessage($"Login code: {Code}", MainWindow.mainWindow.UserLogIn.Login);
+            Thread TSendMailCode = new Thread(TimerSendMailCode);
+            TSendMailCode.Start();
+        }
+        public void TimerSendMailCode()
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    LTimer.Content = $"A second message can be sent after {(60 - i)} seconds";
+                });
+                Thread.Sleep(1000);
+            }
+            Dispatcher.Invoke(() =>
+            {
+                BSendMessage.IsEnabled = true;
+                LTimer.Content = "";
+            });
+        }
+        private void SendMail(object sender, RoutedEventArgs e)
+        {
+            SendMailCode();
+        }
+        private void SetCode(object sender, KeyEventArgs e)
+        {
+            if (TbCode.Text.Length == 6)
+                SetCode();
+        }
+
+        private void SetCode(object sender, RoutedEventArgs e) =>
+            SetCode();
+
+        void SetCode()
+        {
+            if (TbCode.Text == Code.ToString() && TbCode.IsEnabled == true)
+            {
+                TbCode.IsEnabled = false;
+                if (ThisTypeConfirmation == TypeConfirmation.Login)
+                {
+                    MessageBox.Show("Авторизация подтверждена!");
+                    if (string.IsNullOrEmpty(MainWindow.mainWindow.UserLogIn.PinCode))
+                    {
+                        MainWindow.mainWindow.OpenPage(new PinSetup());
+                    }
+                    else
+                    {
+                        MainWindow.mainWindow.OpenPage(new PinLogin());
+                    }
+                }
+                else
+                {
+                    MainWindow.mainWindow.UserLogIn.SetUser();
+                    MessageBox.Show("Регистрация подтверждена! Создайте PIN для быстрого входа.");
+                    MainWindow.mainWindow.OpenPage(new PinSetup());
+                }
+            }
+        }
+        private void OpenLogin(object sender, MouseButtonEventArgs e) =>
+            MainWindow.mainWindow.OpenPage(new Login());
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\Login.xaml.cs
+================================================================================
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using pr6.Classes;
+
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для Login.xaml
+    /// </summary>
+    /// <summary>
+    /// Логика взаимодействия для Login.xaml
+    /// </summary>
+    public partial class Login : Page
+    {
+        string OldLogin;
+        int CountSetPassword;
+        bool IsCapture;
+
+        public Login()
+        {
+            InitializeComponent();
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
+            Capture.HandlerCorrectCapture += CorrectCapture;
+
+            // Инициализация счетчика попыток, если он нужен для капчи/блокировки
+            CountSetPassword = 3; // Предположим, 3 попытки
+        }
+
+        public void CorrectLogin()
+        {
+            if (OldLogin != TbLogin.Text)
+            {
+                SetNotification("Hi, " + MainWindow.mainWindow.UserLogIn.Name, Brushes.Black);
+                try
+                {
+                    BitmapImage biImg = new BitmapImage();
+                    MemoryStream ms = new MemoryStream(MainWindow.mainWindow.UserLogIn.Image);
+                    biImg.BeginInit();
+                    biImg.StreamSource = ms;
+                    biImg.EndInit();
+                    ImageSource imgSrc = biImg;
+                    DoubleAnimation StartAnimation = new DoubleAnimation();
+                    StartAnimation.From = 1;
+                    StartAnimation.To = 0;
+                    StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                    StartAnimation.Completed += delegate
+                    {
+                        IUser.Source = imgSrc;
+                        DoubleAnimation EndAnimation = new DoubleAnimation();
+                        EndAnimation.From = 0;
+                        EndAnimation.To = 1;
+                        EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                        IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
+                    };
+                    IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
+                }
+                catch (Exception exp)
+                {
+                    Debug.WriteLine(exp.Message);
+                }
+                ;
+                OldLogin = TbLogin.Text;
+            }
+        }
+
+        /// <summary>
+        /// Метод не успешной авторизации
+        /// </summary>
+        public void InCorrectLogin()
+        {
+            if (LNameUser.Content != "")
+            {
+                LNameUser.Content = "";
+                // Создаём анимацию старта
+                DoubleAnimation StartAnimation = new DoubleAnimation();
+                StartAnimation.From = 1;
+                StartAnimation.To = 0;
+                StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                StartAnimation.Completed += delegate
+                {
+                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_user.png"));
+                    DoubleAnimation EndAnimation = new DoubleAnimation();
+                    EndAnimation.From = 0;
+                    EndAnimation.To = 1;
+                    EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                    IUser.BeginAnimation(OpacityProperty, EndAnimation);
+                };
+                IUser.BeginAnimation(OpacityProperty, StartAnimation);
+            }
+            if (TbLogin.Text.Length > 0)
+                SetNotification("Login is incorrect", Brushes.Red);
+
+            // Сброс счетчика, чтобы предотвратить дальнейший ввод
+            CountSetPassword = 3;
+            IsCapture = false; // Сброс флага капчи
+        }
+
+        public void CorrectCapture()
+        {
+            Capture.IsEnabled = false;
+            IsCapture = true;
+        }
+
+        /// <summary>
+        /// Ввод пароля по нажатию Enter
+        /// </summary>
+        private void SetPassword(object sender, KeyEventArgs e)
+        {
+            // Если пользователь нажал клавишу Enter
+            if (e.Key == Key.Enter)
+                // Вызываем метод ввода пароля
+                SetPassword();
+        }
+
+        public void NavigateAfterSuccessfulLogin()
+        {
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin -= CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin -= InCorrectLogin;
+            Capture.HandlerCorrectCapture -= CorrectCapture;
+
+            if (!string.IsNullOrEmpty(MainWindow.mainWindow.UserLogIn.PinCode)) 
+            {
+                MainWindow.mainWindow.OpenPage(new PinLogin());
+            }
+            else
+            {
+                MainWindow.mainWindow.ShowMainApp();
+            }
+        }
+
+        /// <summary>
+        /// Ввод пароля
+        /// </summary>
+        public void SetPassword()
+        {
+            if (MainWindow.mainWindow.UserLogIn.Password != String.Empty)
+            {
+                if (IsCapture)
+                {
+                    if (MainWindow.mainWindow.UserLogIn.Password == TbPassword.Password)
+                    {
+                        // ИСПРАВЛЕНИЕ: Вместо открытия Confirmation, 
+                        // вызываем новую логику навигации
+                        NavigateAfterSuccessfulLogin();
+                    }
+                    else
+                    {
+                        if (CountSetPassword > 0)
+                        {
+                            SetNotification($"Password is incorrect, {CountSetPassword} attempts left", Brushes.Red);
+                            CountSetPassword--;
+                        }
+                        else
+                        {
+                            Thread TBlockAuthorization = new Thread(BlockAuthorization);
+                            TBlockAuthorization.Start();
+                            SendMail.SendMessage("An attempt was made to log into your account.", MainWindow.mainWindow.UserLogIn.Login);
+                        }
+                    }
+                }
+                else
+                    SetNotification($"Enter capture", Brushes.Red);
+            }
+        }
+
+        // ... (Остальной код BlockAuthorization, SetLogin и т.д. без изменений)
+
+        /// <summary>
+        /// Метод блокировки авторизации
+        /// </summary>
+        public void BlockAuthorization()
+        {
+            DateTime StartBlock = DateTime.Now.AddMinutes(3);
+            Dispatcher.Invoke(() =>
+            {
+                TbLogin.IsEnabled = false;
+                TbPassword.IsEnabled = false;
+                Capture.IsEnabled = false;
+            });
+            for (int i = 0; i < 180; i++)
+            {
+                TimeSpan TimeIdle = StartBlock.Subtract(DateTime.Now);
+                string s_minutes = TimeIdle.Minutes.ToString();
+                if (TimeIdle.Minutes < 10)
+                    s_minutes = "0" + TimeIdle.Minutes;
+                string s_seconds = TimeIdle.Seconds.ToString();
+                if (TimeIdle.Seconds < 10)
+                    s_seconds = "0" + TimeIdle.Seconds;
+                Dispatcher.Invoke(() =>
+                {
+                    SetNotification($"Reauthorization available in: {s_minutes}:{s_seconds}", Brushes.Red);
+                });
+                Thread.Sleep(1000);
+            }
+            Dispatcher.Invoke(() =>
+            {
+                SetNotification("Hi, " + MainWindow.mainWindow.UserLogIn.Name, Brushes.Black);
+                TbLogin.IsEnabled = true;
+                TbPassword.IsEnabled = true;
+                Capture.IsEnabled = true;
+                Capture.CreateCapture();
+                IsCapture = false;
+                CountSetPassword = 3; // Изменено на 3 для согласованности
+            });
+        }
+
+        /// <summary>
+        /// Ввод логина пользователя
+        /// </summary>
+        private void SetLogin(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+                if (TbPassword.Password.Length > 0)
+                    SetPassword();
+            }
+        }
+
+        /// <summary>
+        /// Ввод логина пользователя
+        /// </summary>
+        private void SetLogin(object sender, RoutedEventArgs e)
+        {
+            MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+            if (TbPassword.Password.Length > 0)
+                SetPassword();
+        }
+
+        /// <summary>
+        /// Метод уведомлений пользователя
+        /// </summary>
+        /// <param name="Message">Сообщение которое необходимо вывести</param>
+        /// <param name="_Color">Цвет сообщения</param>
+        public void SetNotification(string Message, SolidColorBrush _Color)
+        {
+            LNameUser.Content = Message;
+            LNameUser.Foreground = _Color;
+        }
+
+        /// <summary>
+        /// Метод открытия страницы восстановления пароля
+        /// </summary>
+        private void RecoveryPassword(object sender, MouseButtonEventArgs e) =>
+            MainWindow.mainWindow.OpenPage(new Recovery());
+
+        /// <summary>
+        /// Метод открытия страницы регистрации
+        /// </summary>
+        private void OpenRegin(object sender, MouseButtonEventArgs e) =>
+            MainWindow.mainWindow.OpenPage(new Regin());
+
+        private void BtnPinLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Открываем страницу входа по PIN
+            MainWindow.mainWindow.OpenPage(new PinLogin());
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\PinLogin.xaml.cs
+================================================================================
+using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для PinLogin.xaml
+    /// </summary>
+    public partial class PinLogin : Page
+    {
+        public PinLogin()
+        {
+            InitializeComponent();
+            LoadUserInfo();
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += LoginOk;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += LoginFail;
+        }
+
+        private void PinControl_PinCompleted(string pin)
+        {
+            BtnLogin.IsEnabled = true;
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string pin = PinControl.PinCode;
+
+            if (pin.Length == 4)
+            {
+                MainWindow.mainWindow.UserLogIn.LoginByPin(pin);
+            }
+            else
+            {
+                MessageBox.Show("Введите 4 цифры PIN!");
+                PinControl.Clear();
+                BtnLogin.IsEnabled = false;
+            }
+        }
+
+        private void LoadUserInfo()
+        {
+            try
+            {
+                // Имя
+                LUserName.Content = MainWindow.mainWindow.UserLogIn.Name;
+
+                // Фото
+                byte[] img = MainWindow.mainWindow.UserLogIn.Image;
+                if (img != null && img.Length > 0)
+                {
+                    using (var ms = new MemoryStream(img))
+                    {
+                        BitmapImage bi = new BitmapImage();
+                        bi.BeginInit();
+                        bi.CacheOption = BitmapCacheOption.OnLoad;
+                        bi.StreamSource = ms;
+                        bi.EndInit();
+                        IUserControl.Source = bi;
+                    }
+                }
+                else
+                {
+                    IUserControl.Source = new BitmapImage(new Uri("/Images/ic_user.png", UriKind.Relative));
+                }
+            }
+            catch
+            {
+                IUserControl.Source = new BitmapImage(new Uri("/Images/ic_user.png", UriKind.Relative));
+            }
+        }
+
+        private void LoginOk()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                string namae = MainWindow.mainWindow.UserLogIn.Name;
+                MainWindow.mainWindow.ShowMainApp();
+            });
+        }
+
+        private void LoginFail()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show("Incorrect PIN");
+
+               PinControl.Clear();
+
+            });
+        }
+
+        private void OpenLogin(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.mainWindow.OpenPage(new Login());
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\PinSetup.xaml.cs
+================================================================================
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для PinSetup.xaml
+    /// </summary>
+    public partial class PinSetup : Page
+    {
+        public PinSetup()
+        {
+            InitializeComponent();
+            PinControl.Clear(); 
+        }
+
+        private void PinControl_PinCompleted(string pin)
+        {
+            BtnSetPin.IsEnabled = true; 
+        }
+
+        private void BtnSetPin_Click(object sender, RoutedEventArgs e)
+        {
+            string pin = PinControl.PinCode;
+
+            if (pin.Length == 4)
+            {
+                MainWindow.mainWindow.UserLogIn.SavePin(pin);
+                MessageBox.Show("PIN установлен успешно!");
+                MainWindow.mainWindow.ShowMainApp();
+            }
+            else
+            {
+                MessageBox.Show("Введите 4 цифры!");
+                PinControl.Clear();
+                BtnSetPin.IsEnabled = false;
+            }
+        }
+
+        private void OpenLogin(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.mainWindow.OpenPage(new Login());
+        }
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\Recovery.xaml.cs
+================================================================================
+using pr6.Classes;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для Recovery.xaml
+    /// </summary>
+    public partial class Recovery : Page
+    {
+        /// <summary>
+        /// Логин введённый пользователем
+        /// </summary>
+        string OldLogin;
+
+        /// <summary>
+        /// Переменная отвечающая за ввод капчи
+        /// </summary>
+        bool IsCapture = false;
+        public Recovery()
+        {
+            InitializeComponent();
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
+            Capture.HandlerCorrectCapture += CorrectCapture;
+        }
+        /// <summary>
+        /// Метод правильного ввода логина
+        /// </summary>
+        private void CorrectLogin()
+        {
+            if (OldLogin != TbLogin.Text)
+            {
+                SetNotification("Hi, " + MainWindow.mainWindow.UserLogIn.Name, Brushes.Black);
+                try
+                {
+                    BitmapImage biImg = new BitmapImage();
+                    MemoryStream ms = new MemoryStream(MainWindow.mainWindow.UserLogIn.Image);
+                    biImg.BeginInit();
+                    biImg.StreamSource = ms;
+                    biImg.EndInit();
+                    ImageSource imgSrc = biImg;
+                    DoubleAnimation StartAnimation = new DoubleAnimation();
+                    StartAnimation.From = 1;
+                    StartAnimation.To = 0;
+                    StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                    StartAnimation.Completed += delegate
+                    {
+                        IUser.Source = imgSrc;
+                        DoubleAnimation EndAnimation = new DoubleAnimation();
+                        EndAnimation.From = 0;
+                        EndAnimation.To = 1;
+                        EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                        IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
+                    };
+                    IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
+                }
+                catch (Exception exp)
+                {
+                    Debug.WriteLine(exp.Message);
+                }
+                ;
+                OldLogin = TbLogin.Text;
+                SendNewPassword();
+            }
+        }
+        private void InCorrectLogin()
+        {
+            if (LNameUser.Content != "")
+            {
+                LNameUser.Content = "";
+                DoubleAnimation StartAnimation = new DoubleAnimation();
+                StartAnimation.From = 1;
+                StartAnimation.To = 0;
+                StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                StartAnimation.Completed += delegate
+                {
+                    IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/ic_user.png"));
+                    DoubleAnimation EndAnimation = new DoubleAnimation();
+                    EndAnimation.From = 0;
+                    EndAnimation.To = 1;
+                    EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                    IUser.BeginAnimation(OpacityProperty, EndAnimation);
+                };
+                IUser.BeginAnimation(OpacityProperty, StartAnimation);
+            }
+
+            if (TbLogin.Text.Length > 0)
+                SetNotification("Login is incorrect", Brushes.Red);
+        }
+        private void CorrectCapture()
+        {
+            Capture.IsEnabled = false;
+            IsCapture = true;
+            SendNewPassword();
+        }
+        private void SetLogin(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+        }
+
+        private void SetLogin(object sender, RoutedEventArgs e) =>
+            MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+
+        public void SendNewPassword()
+        {
+            if (IsCapture)
+            {
+                if (MainWindow.mainWindow.UserLogIn.Password != String.Empty)
+                {
+                    DoubleAnimation StartAnimation = new DoubleAnimation();
+                    StartAnimation.From = 1;
+                    StartAnimation.To = 0;
+                    StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                    StartAnimation.Completed += delegate
+                    {
+                        IUser.Source = new BitmapImage(new Uri("pack://application:,,,/Images/gmail.png"));
+                        DoubleAnimation EndAnimation = new DoubleAnimation();
+                        EndAnimation.From = 0;
+                        EndAnimation.To = 1;
+                        EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                        IUser.BeginAnimation(OpacityProperty, EndAnimation);
+                    };
+                    IUser.BeginAnimation(OpacityProperty, StartAnimation);
+                    SetNotification("An email has been sent to your email.", Brushes.Black);
+                    MainWindow.mainWindow.UserLogIn.CrateNewPassword();
+                }
+            }
+        }
+        public void SetNotification(string Message, SolidColorBrush _Color)
+        {
+            LNameUser.Content = Message;
+            LNameUser.Foreground = _Color;
+        }
+        private void OpenLogin(object sender, MouseButtonEventArgs e) =>
+        MainWindow.mainWindow.OpenPage(new Login());
+    }
+}
+
+
+================================================================================
+FILE: pr6\Pages\Regin.xaml.cs
+================================================================================
+using Microsoft.Win32;
+using pr6.Classes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using static pr6.Classes.User;
+using Imaging = Aspose.Imaging;
+
+namespace pr6.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для Regin.xaml
+    /// </summary>
+    public partial class Regin : Page
+    {
+        OpenFileDialog FileDialogImage = new OpenFileDialog();
+
+        bool BCorrectLogin = false;
+
+        bool BCorrectPassword = false;
+
+        bool BCorrectConfirmPassword = false;
+
+        bool BSetImages = false;
+        public Regin()
+        {
+            InitializeComponent();
+            MainWindow.mainWindow.UserLogIn.HandlerCorrectLogin += CorrectLogin;
+            MainWindow.mainWindow.UserLogIn.HandlerInCorrectLogin += InCorrectLogin;
+            FileDialogImage.Filter = "PNG (*.png)|*.png|JPG (*.jpg)|*.jpg";
+            FileDialogImage.RestoreDirectory = true;
+            FileDialogImage.Title = "Choose a photo for your avatar";
+        }
+        private void CorrectLogin()
+        {
+            SetNotification("Login already in use", Brushes.Red);
+            BCorrectLogin = false;
+        }
+
+        private void InCorrectLogin() =>
+            SetNotification("", Brushes.Black);
+
+        private void SetLogin(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                SetLogin();
+        }
+
+        private void SetLogin(object sender, System.Windows.RoutedEventArgs e) =>
+            SetLogin();
+
+        public void SetLogin()
+        {
+            Regex regex = new Regex(@"^([a-zA-Z0-9._-]{4,})@[a-zA-Z0-9._-]{2,}\.[a-zA-Z0-9_-]{2,}$");
+            BCorrectLogin = regex.IsMatch(TbLogin.Text);
+            if (regex.IsMatch(TbLogin.Text) == true)
+            {
+                SetNotification("", Brushes.Black);
+                MainWindow.mainWindow.UserLogIn.GetUserLogin(TbLogin.Text);
+            }
+            else
+            {
+                SetNotification("Invalid login", Brushes.Red);
+                OnRegin();
+            }
+        }
+        #region SetPassword
+        private void SetPassword(object sender, System.Windows.RoutedEventArgs e) =>
+            SetPassword();
+
+        private void SetPassword(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                SetPassword();
+        }
+
+        public void SetPassword()
+        {
+            Regex regex = new Regex(@"(?=.*[0-9])(?=.*[!@#$%^&?*\-_])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&?*\-_]{10,}");
+            BCorrectPassword = regex.IsMatch(TbPassword.Password);
+            if (regex.IsMatch(TbPassword.Password) == true)
+            {
+                SetNotification("", Brushes.Black);
+                if (TbConfirmPassword.Password.Length > 0)
+                    ConfirmPassword(true);
+                OnRegin();
+            }
+            else
+            {
+                SetNotification("Invalid password", Brushes.Red);
+            }
+        }
+
+        #endregion
+        #region SetConfirmPassword
+        private void ConfirmPassword(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ConfirmPassword();
+        }
+
+        private void ConfirmPassword(object sender, System.Windows.RoutedEventArgs e) =>
+            ConfirmPassword();
+
+        public void ConfirmPassword(bool Pass = false)
+        {
+            BCorrectConfirmPassword = TbConfirmPassword.Password == TbPassword.Password;
+            if (TbConfirmPassword.Password != TbPassword.Password)
+                SetNotification("Passwords do not match", Brushes.Red);
+            else
+            {
+                SetNotification("", Brushes.Black);
+                if (!Pass)
+                    SetPassword();
+            }
+        }
+        #endregion
+        void OnRegin()
+        {
+            if (!BCorrectLogin)
+                return;
+            if (TbName.Text.Length == 0)
+                return;
+            if (!BCorrectPassword)
+                return;
+            if (!BCorrectConfirmPassword)
+                return;
+            MainWindow.mainWindow.UserLogIn.Login = TbLogin.Text;
+            MainWindow.mainWindow.UserLogIn.Password = TbPassword.Password;
+            MainWindow.mainWindow.UserLogIn.Name = TbName.Text;
+            if (BSetImages)
+                MainWindow.mainWindow.UserLogIn.Image = File.ReadAllBytes(Directory.GetCurrentDirectory() + @"\IUser.jpg");
+            MainWindow.mainWindow.UserLogIn.DateUpdate = DateTime.Now;
+            MainWindow.mainWindow.UserLogIn.DateCreate = DateTime.Now;
+            MainWindow.mainWindow.OpenPage(new Confirmation(Confirmation.TypeConfirmation.Regin));
+        }
+        private void SetName(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
+        }
+        public void SetNotification(string Message, SolidColorBrush _Color)
+        {
+            LNameUser.Content = Message;
+            LNameUser.Foreground = _Color;
+        }
+        private void SelectImage(object sender, MouseButtonEventArgs e)
+        {
+            if (FileDialogImage.ShowDialog() == true)
+            {
+                using (Imaging.Image image = Imaging.Image.Load(FileDialogImage.FileName))
+                {
+                    int NewWidth = 0;
+                    int NewHeight = 0;
+                    if (image.Width > image.Height)
+                    {
+                        NewWidth = (int)(image.Width * (256f / image.Height));
+                        NewHeight = 256;
+                    }
+                    else
+                    {
+                        NewWidth = 256;
+                        NewHeight = (int)(image.Height * (256f / image.Width));
+                    }
+                    image.Resize(NewWidth, NewHeight);
+                    image.Save("IUser.jpg");
+                }
+                using (Imaging.RasterImage rasterImage = (Imaging.RasterImage)Imaging.Image.Load("IUser.jpg"))
+                {
+                    if (!rasterImage.IsCached)
+                    {
+                        rasterImage.CacheData();
+                    }
+                    int X = 0;
+                    int Width = 256;
+                    int Y = 0;
+                    int Height = 256;
+                    if (rasterImage.Width > rasterImage.Height)
+                        X = (int)((rasterImage.Width - 256f) / 2);
+                    else
+                        Y = (int)((rasterImage.Height - 256f) / 2);
+                    Imaging.Rectangle rectangle = new Imaging.Rectangle(X, Y, Width, Height);
+                    rasterImage.Crop(rectangle);
+                    rasterImage.Save("IUser.jpg");
+                }
+                DoubleAnimation StartAnimation = new DoubleAnimation();
+                StartAnimation.From = 1;
+                StartAnimation.To = 0;
+                StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                StartAnimation.Completed += delegate
+                {
+                    IUser.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\IUser.jpg"));
+                    DoubleAnimation EndAnimation = new DoubleAnimation();
+                    EndAnimation.From = 0;
+                    EndAnimation.To = 1;
+                    EndAnimation.Duration = TimeSpan.FromSeconds(1.2);
+                    IUser.BeginAnimation(Image.OpacityProperty, EndAnimation);
+                };
+                IUser.BeginAnimation(Image.OpacityProperty, StartAnimation);
+                BSetImages = true;
+            }
+            else
+                BSetImages = false;
+        }
+        private void OpenLogin(object sender, MouseButtonEventArgs e) =>
+    MainWindow.mainWindow.OpenPage(new Login());
+    }
+}
+
+
+================================================================================
+FILE: pr6\Properties\AssemblyInfo.cs
+================================================================================
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Windows;
+
+// Общие сведения об этой сборке предоставляются следующим набором
+// набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
+// связанные со сборкой.
+[assembly: AssemblyTitle("pr6")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("pr6")]
+[assembly: AssemblyCopyright("Copyright ©  2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+// Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
+// для компонентов COM. Если необходимо обратиться к типу в этой сборке через
+// из модели COM, установите атрибут ComVisible для этого типа в значение true.
+[assembly: ComVisible(false)]
+
+//Чтобы начать создание локализуемых приложений, задайте
+//<UICulture>CultureYouAreCodingWith</UICulture> в файле .csproj
+//в <PropertyGroup>. Например, при использовании английского (США)
+//в своих исходных файлах установите <UICulture> в en-US.  Затем отмените преобразование в комментарий
+//атрибута NeutralResourceLanguage ниже.  Обновите "en-US" в
+//строка внизу для обеспечения соответствия настройки UICulture в файле проекта.
+
+//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+
+
+[assembly: ThemeInfo(
+    ResourceDictionaryLocation.None, //где расположены словари ресурсов по конкретным тематикам
+                                     //(используется, если ресурс не найден на странице,
+                                     // или в словарях ресурсов приложения)
+    ResourceDictionaryLocation.SourceAssembly //где расположен словарь универсальных ресурсов
+                                              //(используется, если ресурс не найден на странице,
+                                              // в приложении или в каких-либо словарях ресурсов для конкретной темы)
+)]
+
+
+// Сведения о версии для сборки включают четыре следующих значения:
+//
+//      Основной номер версии
+//      Дополнительный номер версии
+//      Номер сборки
+//      Номер редакции
+//
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+
+
+
+================================================================================
+FILE: pr6\Properties\Resources.Designer.cs
+================================================================================
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     Этот код был создан программным средством.
+//     Версия среды выполнения: 4.0.30319.42000
+//
+//     Изменения в этом файле могут привести к неправильному поведению и будут утрачены, если
+//     код создан повторно.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace pr6.Properties
+{
+
+
+    /// <summary>
+    ///   Класс ресурсов со строгим типом для поиска локализованных строк и пр.
+    /// </summary>
+    // Этот класс был автоматически создан при помощи StronglyTypedResourceBuilder
+    // класс с помощью таких средств, как ResGen или Visual Studio.
+    // Для добавления или удаления члена измените файл .ResX, а затем перезапустите ResGen
+    // с параметром /str или заново постройте свой VS-проект.
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Возврат кэшированного экземпляра ResourceManager, используемого этим классом.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("pr6.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Переопределяет свойство CurrentUICulture текущего потока для всех
+        ///   подстановки ресурсов с помощью этого класса ресурсов со строгим типом.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+
+
+
+================================================================================
+FILE: pr6\Properties\Resources.resx
+================================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>
+
+
+================================================================================
+FILE: pr6\Properties\Settings.Designer.cs
+================================================================================
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace pr6.Properties
+{
+
+
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}
+
+
+

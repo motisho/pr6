@@ -116,7 +116,6 @@ namespace pr6.Classes
                     cmd.Parameters.AddWithValue("@DateCreate", DateCreate);
                     cmd.Parameters.AddWithValue("@PinCode", PinCode);
 
-                    // ВАЖНО: сохраняем Id обратно в объект
                     Id = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
