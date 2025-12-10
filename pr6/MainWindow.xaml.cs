@@ -55,7 +55,7 @@ namespace pr6
         /// <summary>
         /// Точка входа в основное приложение после авторизации/установки PIN.
         /// Здесь можно заменить на реальную загрузку главной страницы приложения.
-        /// </summary>
+        /// </summary> 
         public void ShowMainApp()
         {
             OpenPage(new Pages.Login());
